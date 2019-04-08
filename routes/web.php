@@ -34,4 +34,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
         'uses' => 'WordsController@index',
         'as' => 'words'
     ]);
+    Route::get('/word/edit/{id}', [
+        'uses' => 'WordsController@edit',
+        'as' => 'word.edit'
+    ]);
+    Route::post('/word/update/{id}', [
+        'uses' => 'WordsController@update',
+        'as' => 'word.update'
+    ]);
 });

@@ -71,7 +71,9 @@ class WordsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $word = Word::find($id);
+
+        return view('admin.words.edit')->with('word', $word);
     }
 
     /**
@@ -83,7 +85,23 @@ class WordsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'kanji' => 'required',
+            'hiragana' => 'required',
+            'note' => 'required'
+        ]);
+
+        $word = Word::find($id);
+
+        $word->title = $request->title;
+        $word->kanji = $request->kanji;
+        $word->hiragana = $request->hiragana;
+        $word->note = $request->note;
+        
+        $word->save();
+
+        return redirect()->back();
     }
 
     /**
