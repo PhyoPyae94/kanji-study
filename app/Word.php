@@ -3,8 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Word extends Model
 {
-    protected $fillable = ['title', 'kanji', 'hiragana', 'note'];
+    use softDeletes;
+
+    protected $fillable = ['title', 'kanji', 'hiragana', 'note', 'slug'];
+
+    protected $dates = ['delete-at'];
 }

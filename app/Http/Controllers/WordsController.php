@@ -46,7 +46,8 @@ class WordsController extends Controller
             'title' => $request->title,
             'kanji' => $request->kanji,
             'hiragana' => $request->hiragana,
-            'note' => $request->note
+            'note' => $request->note,
+            'slug' => str_slug($request->title)
         ]);
 
         return redirect()->route('words');
@@ -112,6 +113,26 @@ class WordsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $word = Word::find($id);
+
+        $word->delete();
+
+        return redirect()->back();
+    }
+
+    public function trashed()
+    {
+        $words = Word::onlyTrashed()->get();
+
+        return view('admin.words.trashed')->with('words', $words);
+    }
+
+    public function kill($id)
+    {
+        $word = Word::withTrashed()->where('id', $id)->first();
+
+        $word->forceDelete();
+
+        return redirect()->back();
     }
 }

@@ -16,9 +16,12 @@ class CreateWordsTable extends Migration
         Schema::create('words', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
+            $table->string('slug');
             $table->string('kanji');
             $table->string('hiragana');
             $table->string('note');
+            
+            $table->softDeletes();
             $table->timestamps();
         });
     }

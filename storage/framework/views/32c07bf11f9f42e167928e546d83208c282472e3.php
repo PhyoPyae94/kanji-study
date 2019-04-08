@@ -76,7 +76,7 @@
 
         <main class="py-2">
             <div class="container">
-                <div class="row ">
+                <div class="row justify-content-center">
                     <?php if(Auth::check()): ?>
                         <div class="col-lg-3">
                             <ul class="list-group">
@@ -90,7 +90,7 @@
                                     <a href="<?php echo e(route('word.create')); ?>">Add New Words</a>
                                 </li>
                                 <li class="list-group-item">
-                                    <a href="#">Trash Words</a>
+                                    <a href="<?php echo e(route('words.trashed')); ?>">Trashed Words</a>
                                 </li>
                                 <li class="list-group-item">
                                     <a href="#">Turorial</a>

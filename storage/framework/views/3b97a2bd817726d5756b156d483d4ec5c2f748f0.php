@@ -34,7 +34,7 @@
                                         <td><?php echo e($word->hiragana); ?></td>
                                         <td><?php echo e($word->kanji); ?></td>
                                         <td><a href="<?php echo e(route('word.edit', ['id' => $word->id])); ?>" class="btn btn-xs btn-info">Edit</a></td>
-                                        <td><a href="#" class="btn btn-xs btn-danger">Trash</a></td>
+                                        <td><a href="<?php echo e(route('word.trash', ['id' => $word->id])); ?>" class="btn btn-xs btn-danger">Trash</a></td>
                                     </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <?php else: ?>
