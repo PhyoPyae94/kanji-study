@@ -135,4 +135,13 @@ class WordsController extends Controller
 
         return redirect()->back();
     }
+
+    public function restore($id)
+    {
+        $word = Word::withTrashed()->where('id', $id)->first();
+
+        $word->restore();
+
+        return redirect()->back();
+    }
 }

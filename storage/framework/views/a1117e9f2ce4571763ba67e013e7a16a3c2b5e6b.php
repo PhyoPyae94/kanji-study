@@ -21,9 +21,6 @@
                                     kanji
                                 </th>
                                 <th>
-                                    Edit
-                                </th>
-                                <th>
                                     Restore
                                 </th>
                                 <th>
@@ -37,9 +34,8 @@
                                         <td><?php echo e($word->title); ?></td>
                                         <td><?php echo e($word->hiragana); ?></td>
                                         <td><?php echo e($word->kanji); ?></td>
-                                        <td><a href="#" class="btn btn-xs btn-info">Edit</a></td>
-                                        <td><a href="#" class="btn btn-xs btn-success">Restore</a></td>
-                                        <td><a href="<?php echo e(route('word.delete', ['id' => $word->id])); ?>" class="btn btn-xs btn-danger">Delete</a></td>
+                                        <td><a href="<?php echo e(route('word.restore', ['id' => $word->id ])); ?>" class="btn btn-xs btn-success">Restore</a></td>
+                                        <td><a href="<?php echo e(route('word.delete', ['id' => $word->id] )); ?>" class="btn btn-xs btn-danger">Delete</a></td> 
                                     </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <?php else: ?>

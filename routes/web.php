@@ -50,4 +50,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
         'uses' => 'WordsController@kill',
         'as' => 'word.delete'
     ]);
+    Route::get('/word/restore/{id}', [
+        'uses' => 'WordsController@restore',
+        'as' => 'word.restore'
+    ]);
 });

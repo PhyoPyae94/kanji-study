@@ -23,9 +23,6 @@
                                     kanji
                                 </th>
                                 <th>
-                                    Edit
-                                </th>
-                                <th>
                                     Restore
                                 </th>
                                 <th>
@@ -39,9 +36,8 @@
                                         <td>{{ $word->title }}</td>
                                         <td>{{ $word->hiragana }}</td>
                                         <td>{{ $word->kanji }}</td>
-                                        <td><a href="#" class="btn btn-xs btn-info">Edit</a></td>
-                                        <td><a href="#" class="btn btn-xs btn-success">Restore</a></td>
-                                        <td><a href="{{route('word.delete', ['id' => $word->id]) }}" class="btn btn-xs btn-danger">Delete</a></td>
+                                        <td><a href="{{ route('word.restore', ['id' => $word->id ]) }}" class="btn btn-xs btn-success">Restore</a></td>
+                                        <td><a href="{{route('word.delete', ['id' => $word->id] ) }}" class="btn btn-xs btn-danger">Delete</a></td> 
                                     </tr>
                                 @endforeach
                             @else
