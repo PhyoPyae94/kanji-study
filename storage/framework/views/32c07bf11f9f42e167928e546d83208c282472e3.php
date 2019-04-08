@@ -18,6 +18,8 @@
 
     <!-- Styles -->
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('css/toastr.min.css')); ?>" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -102,9 +104,18 @@
                             <?php echo $__env->yieldContent('content'); ?>
                         </div>
                 </div>
-            </div> 
-            
+            </div>
         </main>
     </div>
+    <script src="/js/app.js"></script>
+    <script src="/js/toastr.min.js"></script>
+    <script>
+        <?php if(Session::has('success')): ?>
+            toastr.success("<?php echo e(Session::get('success')); ?>");
+        <?php endif; ?>
+        <?php if(Session::has('info')): ?>
+            toastr.info("<?php echo e(Session::get('info')); ?>");
+        <?php endif; ?>
+    </script>
 </body>
 </html>

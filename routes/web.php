@@ -38,6 +38,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
         'uses' => 'WordsController@edit',
         'as' => 'word.edit'
     ]);
+    Route::post('/word/update/{id}', [
+        'uses' => 'WordsController@update',
+        'as' => 'word.update'
+    ]);
     Route::get('/word/trash/{id}', [
         'uses' => 'WordsController@destroy',
         'as' => 'word.trash'

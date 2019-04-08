@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Word;
 use Illuminate\Http\Request;
 
@@ -49,6 +50,8 @@ class WordsController extends Controller
             'note' => $request->note,
             'slug' => str_slug($request->title)
         ]);
+
+        Session::flash('success', 'Word Added');
 
         return redirect()->route('words');
     }
@@ -102,7 +105,9 @@ class WordsController extends Controller
         
         $word->save();
 
-        return redirect()->back();
+        Session::flash('success', 'Successfully Updated');
+
+        return redirect()->route('words');
     }
 
     /**
@@ -116,6 +121,8 @@ class WordsController extends Controller
         $word = Word::find($id);
 
         $word->delete();
+
+        Session::flash('success', 'Successfully trashed');
 
         return redirect()->back();
     }
@@ -133,6 +140,8 @@ class WordsController extends Controller
 
         $word->forceDelete();
 
+        Session::flash('success', 'Successfully deleted');
+
         return redirect()->back();
     }
 
@@ -141,6 +150,8 @@ class WordsController extends Controller
         $word = Word::withTrashed()->where('id', $id)->first();
 
         $word->restore();
+
+        Session::flash('success', 'Restore successful');
 
         return redirect()->back();
     }
