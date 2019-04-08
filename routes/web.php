@@ -14,3 +14,24 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+    Route::get('/home', [
+        'uses' => 'HomeController@index',
+        'as' => 'home'
+    ]);
+    Route::get('/word/create', [
+        'uses' => 'WordsController@create',
+        'as' => 'word.create'
+    ]);
+    Route::post('/word/store', [
+        'uses' => 'WordsController@store',
+        'as' => 'word.store'
+    ]);
+    Route::get('/words', [
+        'uses' => 'WordsController@index',
+        'as' => 'words'
+    ]);
+});
